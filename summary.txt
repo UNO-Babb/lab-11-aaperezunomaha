@@ -1,0 +1,17 @@
+the higher the checkers the lower the idle time but the average wait increases slightly
+ex;for 100 chekers The average wait time was 2.12 minutes.The total idle time was 17910 minutes
+ex;for 90 checkers The average wait time was 2.21 minutes.The total idle time was 16105 minutes
+yield env.timeout(10) yield env.timeout(10) changing it to 10 drops idle time like crazy 
+changing the shoppingTime = items // to 3 or 100 has no apparent change\
+checkoutTime = items // 17 + 1 this drops the average time drastically but idle time goes up a little bit
+
+whith all these changes we get ,most of the time =
+The average wait time was 4.21 minutes.
+The total idle time was 68 minutes(slow day at the mart)
+
+
+
+changign yield env.timeout(1) 
+changign numberCheckers = 2 
+results= The average wait time was 2.51 minutes.The total idle time was 88 minutes
+that seems more balanced than waiting almost 5min

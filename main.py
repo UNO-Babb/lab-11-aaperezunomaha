@@ -13,9 +13,9 @@ idleTime = 0
 
 def shopper(env, id):
     arrive = env.now
-    items = random.randint(5, 20)
-    shoppingTime = items // 2 # shopping takes 1/2 a minute per item.
-    yield env.timeout(shoppingTime)
+    items = random.randint(5, 30) #possivle change
+    shoppingTime = items // 3 # shopping takes 1/2 a minute per item.
+    yield env.timeout(1) #changed
     # join the queue of waiting shoppers
     waitingShoppers.append((id, items, arrive, env.now))
 
@@ -28,7 +28,7 @@ def checker(env):
 
         customer = waitingShoppers.pop(0)
         items = customer[1]
-        checkoutTime = items // 10 + 1
+        checkoutTime = items // 17 + 1
         yield env.timeout(checkoutTime)
 
         eventLog.append((customer[0], customer[1], customer[2], customer[3], env.now))
@@ -38,7 +38,7 @@ def customerArrival(env):
     while True:
         customerNumber += 1
         env.process(shopper(env, customerNumber))
-        yield env.timeout(2) #New shopper every two minutes
+        yield env.timeout(1) #New shopper every two minutes
 
 def processResults():
     totalWait = 0
@@ -56,7 +56,7 @@ def processResults():
 
 
 def main():
-    numberCheckers = 5
+    numberCheckers = 2 #changeButWontGainSpeedWaitTIMEbalanceit
 
     env = simpy.Environment()
 
